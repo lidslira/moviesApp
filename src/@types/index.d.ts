@@ -1,3 +1,5 @@
+declare module '*.png';
+
 import { StringifiedStyles } from 'react-native-size-matters';
 // import original module declarations
 import 'styled-components';
