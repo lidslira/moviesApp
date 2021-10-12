@@ -71,12 +71,14 @@ export const Input = styled.TextInput.attrs<TextInputProps>(
   margin-bottom: ${vs(5)}px;
   margin-left: 10px;
   color: ${({theme}) => theme.Colors.TEXT_COLOR};
+  font-family: 'OpenSans-Regular';
 `;
 
 export const ErrorMessage = styled(Text)`
   color: ${({theme}) => theme.Colors.ERROR};
   margin-top: 15px;
   margin-left: 30px;
+  font-family: 'OpenSans-Regular';
 `;
 
 export const IconInput = styled(Icon).attrs<IconInputProps>(

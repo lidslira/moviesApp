@@ -86,6 +86,7 @@ export const ButtonText = styled(Text).attrs<ButtonTextProps>(({theme}) => ({
       ? theme.Colors[buttonTypes[status].color]
       : theme.Colors.BUTTON_TEXT};
   text-align: center;
+  font-family: 'OpenSans-Regular';
 `;
 
 export const ButtonIcon = styled(Icon).attrs(({theme}) => ({
