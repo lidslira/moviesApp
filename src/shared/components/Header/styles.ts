@@ -20,7 +20,7 @@ export const Container = styled.View`
 export const TitlePage = styled(Text).attrs({
   fontSize: 30,
 })`
-  font-weight: bold;
+  font-family: 'OpenSans-SemiBold';
   color: ${({theme}) => theme.Colors.WHITE};
   margin-bottom: 10px;
   text-align: center;

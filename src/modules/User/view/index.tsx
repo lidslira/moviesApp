@@ -40,7 +40,7 @@ const Profile: React.FC = () => {
         email: data.email,
         password: data.password,
         country: data.country,
-        image: data.imageProfile,
+        imageProfile: data.imageProfile,
         gender: data.gender,
       }),
     );
@@ -75,7 +75,7 @@ const Profile: React.FC = () => {
 
   return (
     <S.Container behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-      <Header title="perfil" />
+      <Header title="profile" />
       <S.ProfileContainer>
         <S.ContainerImage>
           <S.Touchable onPress={() => setModalIsVisible(true)}>
@@ -116,7 +116,8 @@ const Profile: React.FC = () => {
         />
         <Input
           iconLeft="calendar"
-          placeholder="Digite sua data de nascimento"
+          placeholder="Enter your birth date"
+          placeholderTextColor={Colors.PLACEHOLDER}
           value={values.birthDate}
           onChangeText={(value) => {
             setFieldValue('birthDate', value ? mask.birthdate(value) : value);
@@ -128,7 +129,7 @@ const Profile: React.FC = () => {
           <S.Select>
             <S.HeaderSelect>
               <S.GenderSelected>
-                {values.gender ? values.gender.label : 'Selecione o gênero'}
+                {values.gender ? values.gender.label : 'Select your gender'}
               </S.GenderSelected>
               <S.Button onPress={() => setShowGender(!showGender)}>
                 <S.IconSelectRight

@@ -10,10 +10,6 @@ const INITIAL_STATE: UserState = {
     birthDate: '',
     country: '',
     imageProfile: '',
-    gender: {
-      id: undefined,
-      label: '',
-    },
   },
 };
 
