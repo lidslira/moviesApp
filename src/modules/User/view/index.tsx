@@ -100,7 +100,7 @@ const Profile: React.FC = () => {
         </Modal>
         <Input
           iconLeft="card-account-details-outline"
-          placeholder="Enter your name"
+          placeholder="Enter your fullname"
           placeholderTextColor={Colors.PLACEHOLDER}
           value={values.fullName}
           onChangeText={handleChange('fullName')}
