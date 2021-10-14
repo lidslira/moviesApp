@@ -6,9 +6,7 @@ interface ParamsProps {
 
 export default {
   async get(path?: string, params?: ParamsProps, id?: string) {
-    const url = `${path}${id ? `/${id}` : ''}${
-      params ? `?q=${params.text}` : ''
-    }`;
+    const url = `${path}${id ? `/${id}` : ''}${params ? `${params.text}` : ''}`;
 
     return api.get(url);
   },

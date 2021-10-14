@@ -10,4 +10,6 @@ export const IMG_PATH = 'https://image.tmdb.org/t/p/w500';
 // search
 // https://api.themoviedb.org/3/search/movie?api_key={api_key}&query=Jack+Reacher
 
-// DETAILS PATH: https://api.themoviedb.org/3/movie/343611?api_key={api_key}
+// DETAILS PATH: https://api.themoviedb.org/3/movie/343611?${API_KEY}
+
+// genres path https://api.themoviedb.org/3/genre/movie/list?${API_KEY}

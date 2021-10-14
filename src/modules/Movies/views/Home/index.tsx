@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import {ApplicationState} from '~/shared/store';
 import {MoviesProps} from '~/dtos';
-import {getMoviesAction} from '../../store/ducks/actions';
+import {setMoviesAction} from '../../store/ducks/actions';
 
 import * as S from './styles';
 import MovieCard from '~/modules/Movies/components/MovieCard';
@@ -15,7 +15,7 @@ export const Home: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getMoviesAction());
+    dispatch(setMoviesAction());
   }, [dispatch]);
 
   const renderMovieList = ({item}: any) => <MovieCard movie={item} />;

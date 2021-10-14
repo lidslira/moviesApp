@@ -15,7 +15,7 @@ export const TitleText = styled(Text).attrs({
 })`
   font-family: 'OpenSans-Bold';
   color: ${({theme}) => theme.Colors.TEXT_COLOR};
-  margin: 10px;
+  margin: 30px 0px 0px 0px;
 `;
 
 export const MovieInfoText = styled(Text).attrs({

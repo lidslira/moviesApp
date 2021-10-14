@@ -4,6 +4,7 @@ import {MoviesTypes, MoviesState} from './types';
 const INITIAL_STATE: MoviesState = {
   moviesList: [],
   loading: false,
+  searchedMovies: [],
 };
 
 const reducer: Reducer<MoviesState> = (
@@ -11,22 +12,39 @@ const reducer: Reducer<MoviesState> = (
   {type, payload},
 ) => {
   switch (type) {
-    case MoviesTypes.GET_MOVIES:
+    case MoviesTypes.SET_MOVIES:
       return {
         ...state,
         loading: true,
       };
-    case MoviesTypes.GET_MOVIES_SUCCESS:
+    case MoviesTypes.SET_MOVIES_SUCCESS:
       return {
         ...state,
         loading: false,
         moviesList: payload.moviesList,
       };
-    case MoviesTypes.GET_MOVIES_ERROR:
+    case MoviesTypes.SET_MOVIES_ERROR:
       return {
         ...state,
         loading: false,
         moviesList: [],
+      };
+    case MoviesTypes.SEARCH_MOVIES:
+      return {
+        ...state,
+        loading: true,
+      };
+    case MoviesTypes.SEARCH_MOVIES_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        searchedMovies: payload.searchedMovies,
+      };
+    case MoviesTypes.SEARCH_MOVIES_ERROR:
+      return {
+        ...state,
+        loading: false,
+        searchedMovies: [],
       };
     default:
       return state;
