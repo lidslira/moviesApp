@@ -3,7 +3,6 @@ import {useDispatch} from 'react-redux';
 import {ThemeContext} from 'styled-components';
 import {useFormik} from 'formik';
 import {useNavigation} from '@react-navigation/core';
-import {Alert} from 'react-native';
 import validationSchema from './validations';
 
 import {loginAction} from '~/modules/User/store/ducks/actions';
@@ -12,7 +11,7 @@ import * as S from './styles';
 import Button from '~/shared/components/GlobalButton';
 import Input from '~/shared/components/Input';
 import Logo from '~/assets/images/logo.png';
-import {PROFILE_SCREEN} from '~/shared/constants/routes';
+import {TABS_SCREEN} from '~/shared/constants/routes';
 
 interface DataFormProps {
   email: string;
@@ -27,7 +26,7 @@ const Login: React.FC = () => {
 
   const login = (data: DataFormProps) => {
     dispatch(loginAction(data.email, data.password));
-    navigation.navigate(PROFILE_SCREEN);
+    navigation.navigate(TABS_SCREEN);
   };
 
   const {handleSubmit, dirty, handleChange, values, errors} = useFormik({

@@ -11,8 +11,8 @@ interface TitleScreenProps {
 export const Container = styled.View`
   width: 100%;
   flex-direction: row;
-  padding-top: ${vs(10)}px;
-  padding-bottom: ${vs(10)}px;
+  padding-top: ${vs(5)}px;
+  padding-bottom: ${vs(8)}px;
   background-color: ${(props) => props.theme.Colors.BACKGROUND};
 `;
 
@@ -23,7 +23,7 @@ export const ContainerTab = styled.View`
 `;
 
 export const IconTab = styled(Icon)`
-  font-size: ${s(20)}px;
+  font-size: ${s(22)}px;
   padding-bottom: 1px;
 `;
 

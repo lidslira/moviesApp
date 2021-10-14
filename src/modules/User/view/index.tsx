@@ -65,7 +65,7 @@ const Profile: React.FC = () => {
     });
 
   const setNewImage = (path: string) => {
-    setFieldValue('image', path);
+    setFieldValue('imageProfile', path);
     setModalIsVisible(false);
   };
 

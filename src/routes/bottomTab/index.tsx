@@ -3,13 +3,7 @@ import React, {useContext} from 'react';
 import {ThemeContext} from 'styled-components';
 import {HOME_TAB} from '~/shared/constants/routes';
 
-import {
-  IconTab,
-  TitleScreen,
-  Touchable,
-  Container,
-  ContainerTab,
-} from './styles';
+import {IconTab, Touchable, Container, ContainerTab} from './styles';
 
 interface BottomTabProps {
   state: any;
@@ -59,8 +53,6 @@ const BottomTab: React.FC<BottomTabProps> = ({
         target: route.key,
       });
     };
-
-    const nameScreen = label === HOME_TAB ? 'Home' : 'Perfil';
 
     return (
       <Touchable

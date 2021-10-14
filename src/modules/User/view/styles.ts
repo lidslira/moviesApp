@@ -100,7 +100,7 @@ export const HeaderSelect = styled.View`
 export const GenderSelected = styled(Text).attrs(({theme}) => ({
   fontSize: theme.Sizes.FONTSIZE_INPUT,
 }))`
-  color: ${({theme}) => theme.Colors.PLACEHOLDER};
+  color: ${({theme}) => theme.Colors.TEXT_COLOR};
   font-family: 'OpenSans-Regular';
 `;
 
