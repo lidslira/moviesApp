@@ -27,6 +27,8 @@ type ColorsProps = {
   TAB_ICON_FOCUS: string;
   TAB_ICON: string;
   PLACEHOLDER: string;
+  CARD_COLOR: string;
+  CARD_BORDER_COLOR: string;
 };
 
 type SizingProps = {

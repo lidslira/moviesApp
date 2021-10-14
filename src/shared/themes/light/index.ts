@@ -38,5 +38,7 @@ export default {
     INPUT: '#000',
     TAB_ICON_FOCUS: '#8B0000',
     TAB_ICON: '#1c1c1c',
+    CARD_COLOR: '#FFF',
+    CARD_BORDER_COLOR: '#000',
   },
 };
