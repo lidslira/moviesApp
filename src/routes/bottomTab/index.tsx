@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-nested-ternary
 import React, {useContext} from 'react';
 import {ThemeContext} from 'styled-components';
-import {HOME_TAB} from '~/shared/constants/routes';
+import {HOME_TAB, PROFILE_TAB} from '~/shared/constants/routes';
 
 import {IconTab, Touchable, Container, ContainerTab} from './styles';
 
@@ -68,9 +68,13 @@ const BottomTab: React.FC<BottomTabProps> = ({
               ? isFocused
                 ? 'home'
                 : 'home-outline'
+              : label === PROFILE_TAB
+              ? isFocused
+                ? 'person'
+                : 'person-outline'
               : isFocused
-              ? 'person'
-              : 'person-outline'
+              ? 'search-outline'
+              : 'search-outline'
           }
           type="ionicons"
           color={isFocused ? Colors.TAB_ICON_FOCUS : Colors.TAB_ICON}
