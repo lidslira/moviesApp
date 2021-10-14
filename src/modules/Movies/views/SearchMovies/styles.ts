@@ -29,3 +29,11 @@ export const List = styled.FlatList`
   padding-top: 15px;
   margin-bottom: 5px;
 `;
+
+export const Indicator = styled.ActivityIndicator`
+  margin-top: 35px;
+`;
+
+export const Footer = styled.View`
+  height: ${s(40)}px;
+`;
