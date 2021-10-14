@@ -9,6 +9,8 @@ export enum MoviesTypes {
   SEARCH_MOVIES = '@movies/SEARCH_MOVIES',
   SEARCH_MOVIES_SUCCESS = '@movies/SEARCH_MOVIES_SUCCESS',
   SEARCH_MOVIES_ERROR = '@movies/SEARCH_MOVIES_ERROR',
+
+  CLEAN_LIST = '@movies/CLEAN_LIST',
 }
 
 export interface MoviesState {
@@ -42,4 +44,8 @@ export interface SearchMoviesSuccessProps extends Action {
 
 export interface SearchMoviesErrorProps extends Action {
   type: MoviesTypes.SEARCH_MOVIES_ERROR;
+}
+
+export interface CleanListProps extends Action {
+  type: MoviesTypes.CLEAN_LIST;
 }

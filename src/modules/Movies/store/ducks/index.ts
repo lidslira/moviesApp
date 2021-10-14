@@ -46,6 +46,8 @@ const reducer: Reducer<MoviesState> = (
         loading: false,
         searchedMovies: [],
       };
+    case MoviesTypes.CLEAN_LIST:
+      return INITIAL_STATE;
     default:
       return state;
   }
