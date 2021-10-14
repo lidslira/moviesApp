@@ -9,6 +9,7 @@ export const Container = styled.View.attrs(({theme}) => ({
   elevation: 7,
 }))`
   padding: 5px;
+  flex-grow: 1;
   width: 180px;
   background: ${({theme}) => theme.Colors.CARD_COLOR};
   border-width: 1px;

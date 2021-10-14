@@ -5,14 +5,11 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
 
+import Tabs from './tabNavigators';
 import Login from '~/shared/views/Login';
 import Header from '~/shared/components/AccessibilityHeader';
 
-import {
-  LOGIN_SCREEN,
-  HOME_SCREEN,
-  PROFILE_SCREEN,
-} from '~/shared/constants/routes';
+import {LOGIN_SCREEN, TABS_SCREEN} from '~/shared/constants/routes';
 
 import {createTheme} from '~/shared/utils/theme';
 import {ApplicationState} from '~/shared/store';
@@ -33,13 +30,8 @@ const RootStack: React.FC = () => {
           {isLoggedIn ? (
             <Stack.Navigator>
               <Stack.Screen
-                name={HOME_SCREEN}
-                component={Home}
-                options={{header: () => <Header />}}
-              />
-              <Stack.Screen
-                name={PROFILE_SCREEN}
-                component={Profile}
+                name={TABS_SCREEN}
+                component={Tabs}
                 options={{header: () => <Header />}}
               />
             </Stack.Navigator>
