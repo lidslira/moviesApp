@@ -26,15 +26,8 @@ const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const login = (data: DataFormProps) => {
-    const email = 'teste@email.com';
-    const password = '12345';
-
-    if (data.email === email && data.password === password) {
-      dispatch(loginAction(data.email, data.password));
-      navigation.navigate(PROFILE_SCREEN);
-    } else {
-      Alert.alert('Atenção', 'Este usuário não está cadastrado.');
-    }
+    dispatch(loginAction(data.email, data.password));
+    navigation.navigate(PROFILE_SCREEN);
   };
 
   const {handleSubmit, dirty, handleChange, values, errors} = useFormik({

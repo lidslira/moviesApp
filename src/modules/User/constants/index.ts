@@ -12,5 +12,5 @@ export const LIST_GENDERS: GenderProps[] = [
   {id: 6, label: 'Mulher Trans'},
   {id: 7, label: 'Neutro'},
   {id: 8, label: 'Sem Gênero'},
-  {id: 9, label: 'Não informado'},
+  {id: 9, label: 'Prefiro não informar'},
 ];
