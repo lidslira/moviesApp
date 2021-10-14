@@ -1,5 +1,6 @@
 import React from 'react';
 import {MoviesProps} from '~/dtos';
+import {IMG_PATH} from '~/shared/constants/api';
 
 import * as S from './styles';
 
@@ -10,10 +11,11 @@ interface MovieCardProps {
 const MovieCard: React.FC<MovieCardProps> = ({movie}) => (
   <S.Touchable>
     <S.Container>
-      {/* <S.ImageBook
-        source={{ uri: book.volumeInfo.imageLinks.smallThumbnail }}
-      /> */}
-      <S.TitleBook fontSize={20}>{movie.title}</S.TitleBook>
+      <S.ImageBook source={{uri: IMG_PATH + movie.poster_path}} />
+      <S.TitleBook fontSize={16}>{movie.title}</S.TitleBook>
+      <S.RateContainer>
+        <S.RateInfo fontSize={13}> IMDB: {movie.vote_average}</S.RateInfo>
+      </S.RateContainer>
     </S.Container>
   </S.Touchable>
 );
