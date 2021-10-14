@@ -2,11 +2,11 @@ import React from 'react';
 
 import * as S from './styles';
 
-type Props = {
+interface Props {
   title: string;
-  isFocused: boolean;
-  action: () => void;
-};
+  isFocused?: boolean;
+  action?: () => void;
+}
 
 export function Header({title, isFocused, action}: Props) {
   return (

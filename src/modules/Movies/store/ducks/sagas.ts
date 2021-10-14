@@ -18,7 +18,7 @@ function* getMoviesSagas() {
     const response: ResponseGenerator = yield call(showMoviesList);
 
     if (response.status >= 200 && response.status < 300) {
-      yield put(getMoviesSuccessAction(response.data));
+      yield put(getMoviesSuccessAction(response.data.results));
     } else {
       yield put(getMoviesErrorAction());
     }
