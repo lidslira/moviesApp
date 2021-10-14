@@ -2,19 +2,23 @@ import {applyMiddleware, compose, createStore} from 'redux';
 import {getStoredState, persistReducer, persistStore} from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import thunkMiddleware from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
 
 import {reactotron} from '~/config/ReactotronConfig';
 
 import reducers from './ducks';
+import sagas from './sagas';
 
 import {FontState} from './ducks/font/types';
 import {ThemeState} from './ducks/theme/types';
 import {UserState} from '~/modules/User/store/ducks/types';
+import {MoviesState} from '~/modules/Movies/store/ducks/types';
 
 export interface ApplicationState {
   font: FontState;
   theme: ThemeState;
   user: UserState;
+  movies: MoviesState;
 }
 
 export const persistConfig = {
@@ -24,19 +28,22 @@ export const persistConfig = {
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
+const sagaMonitor = __DEV__ ? reactotron.createSagaMonitor() : null;
+const sagaMiddleware = createSagaMiddleware({sagaMonitor});
 const middleware = [thunkMiddleware];
 
-let composed = applyMiddleware(...middleware);
+let composed = applyMiddleware(...middleware, sagaMiddleware);
 
 if (process.env.NODE_ENV !== 'production' || __DEV__) {
   composed = compose(
-    applyMiddleware(...middleware),
+    applyMiddleware(...middleware, sagaMiddleware),
 
     reactotron.createEnhancer(),
   );
 }
 
 export const store = createStore(persistedReducer, composed);
+sagaMiddleware.run(sagas);
 export const persistor = persistStore(store, null, () => {});
 
 export function startStore() {
