@@ -1,4 +1,5 @@
 import {Reducer} from 'redux';
+import {UserTypes} from '~/modules/User/store/ducks/types';
 import {MoviesTypes, MoviesState} from './types';
 
 const INITIAL_STATE: MoviesState = {
@@ -32,6 +33,8 @@ const reducer: Reducer<MoviesState> = (
   {type, payload},
 ) => {
   switch (type) {
+    case UserTypes.LOGOUT:
+      return INITIAL_STATE;
     case MoviesTypes.SET_MOVIES:
       return {
         ...state,

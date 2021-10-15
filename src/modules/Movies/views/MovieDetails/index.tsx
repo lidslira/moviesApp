@@ -11,6 +11,7 @@ import {Header} from '~/shared/components/Header';
 import * as S from './styles';
 import {ApplicationState} from '~/shared/store';
 import {IMG_PATH} from '~/shared/constants/api';
+import {DateFormat} from '../../utils';
 
 const MovieDetails: React.FC = () => {
   const {Colors} = useContext(ThemeContext);
@@ -26,7 +27,7 @@ const MovieDetails: React.FC = () => {
     navigation.goBack();
   };
   console.tron.log(movie.homepage);
-
+  const newDate = DateFormat(movie.release_date);
   return (
     <S.Container>
       <Header title="movie details" isFocused action={() => handleGoBack()} />
@@ -44,18 +45,24 @@ const MovieDetails: React.FC = () => {
         </S.ContainerImage>
         <S.ContainerName>
           <S.MovieTitle>{movie.title}</S.MovieTitle>
+          {movie.tagline ? (
+            <S.MovieTagline> {movie.tagline} </S.MovieTagline>
+          ) : null}
         </S.ContainerName>
 
         <S.ContainerDetails>
           <S.ContainerTitleDetails>
-            <S.DetailsTitleText>Overview</S.DetailsTitleText>
             <S.DescriptionText>{movie.overview}</S.DescriptionText>
           </S.ContainerTitleDetails>
         </S.ContainerDetails>
+        <S.ContainerTitleDetails>
+          <S.DetailsTitleText>Genres</S.DetailsTitleText>
+          <S.DetailsText>{movie.genres}</S.DetailsText>
+        </S.ContainerTitleDetails>
         <S.ContainerDetails>
           <S.ContainerTitleDetails>
             <S.DetailsTitleText>Release Date</S.DetailsTitleText>
-            <S.DetailsText>{movie.release_date}</S.DetailsText>
+            <S.DetailsText>{newDate}</S.DetailsText>
           </S.ContainerTitleDetails>
           <S.ContainerTitleDetails>
             <S.DetailsTitleText>IMDB</S.DetailsTitleText>
@@ -63,10 +70,6 @@ const MovieDetails: React.FC = () => {
               vote average: {movie.vote_average} | vote count:{' '}
               {movie.vote_count}
             </S.DetailsText>
-          </S.ContainerTitleDetails>
-          <S.ContainerTitleDetails>
-            <S.DetailsTitleText>Genres</S.DetailsTitleText>
-            <S.DetailsText>{movie.genres}</S.DetailsText>
           </S.ContainerTitleDetails>
 
           <S.ContainerTitleDetails>
