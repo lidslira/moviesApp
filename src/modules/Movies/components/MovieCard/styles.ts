@@ -45,7 +45,7 @@ export const RateInfo = styled(Text)`
 
 export const Touchable = styled.TouchableOpacity``;
 
-export const TitleBook = styled(Text)`
+export const TitleMovie = styled(Text)`
   color: ${({theme}) => theme.Colors.CLICKABLE_TEXT};
   flex-shrink: 1;
   flex-wrap: wrap;
@@ -54,7 +54,7 @@ export const TitleBook = styled(Text)`
   margin: 5px;
 `;
 
-export const ImageBook = styled.Image`
+export const ImageMovie = styled.Image`
   width: 170px;
   height: 260px;
 `;

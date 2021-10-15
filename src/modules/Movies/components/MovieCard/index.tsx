@@ -12,14 +12,13 @@ interface MovieCardProps {
 const MovieCard: React.FC<MovieCardProps> = ({movie, action}) => (
   <S.Touchable onPress={() => action()}>
     <S.Container>
-      <S.ImageBook source={{uri: IMG_PATH + movie.poster_path}} />
-      <S.TitleBook fontSize={16}>{movie.title}</S.TitleBook>
+      <S.ImageMovie source={{uri: IMG_PATH + movie.poster_path}} />
+      <S.TitleMovie fontSize={16}>{movie.title}</S.TitleMovie>
       <S.RateContainer>
         <S.IconContainer name="star" color="#fde910" />
-        <S.RateInfo fontSize={13}> IMDB: {movie.vote_average}</S.RateInfo>
+        <S.RateInfo fontSize={13}>IMDB: {movie.vote_average}</S.RateInfo>
       </S.RateContainer>
     </S.Container>
   </S.Touchable>
 );
-
 export default MovieCard;
