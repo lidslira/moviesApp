@@ -7,14 +7,17 @@ import {useSelector} from 'react-redux';
 
 import Tabs from './tabNavigators';
 import Login from '~/shared/views/Login';
-import Header from '~/shared/components/AccessibilityHeader';
+import MovieDetails from '~/modules/Movies/views/MovieDetails';
 
-import {LOGIN_SCREEN, TABS_SCREEN} from '~/shared/constants/routes';
+import Header from '~/shared/components/AccessibilityHeader';
+import {
+  LOGIN_SCREEN,
+  MOVIE_DETAILS,
+  TABS_SCREEN,
+} from '~/shared/constants/routes';
 
 import {createTheme} from '~/shared/utils/theme';
 import {ApplicationState} from '~/shared/store';
-import Profile from '~/modules/User/view';
-import {Home} from '~/modules/Movies/views/Home';
 
 const Stack = createStackNavigator();
 const LoginStack = createStackNavigator();
@@ -32,6 +35,11 @@ const RootStack: React.FC = () => {
               <Stack.Screen
                 name={TABS_SCREEN}
                 component={Tabs}
+                options={{header: () => <Header />}}
+              />
+              <Stack.Screen
+                name={MOVIE_DETAILS}
+                component={MovieDetails}
                 options={{header: () => <Header />}}
               />
             </Stack.Navigator>
