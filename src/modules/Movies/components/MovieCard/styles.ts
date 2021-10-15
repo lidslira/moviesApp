@@ -1,6 +1,13 @@
 import styled from 'styled-components/native';
+import Icon from '~/shared/components/Icon';
 import Text from '~/shared/components/Text';
 import {vs} from '~/shared/utils/responsibleText';
+
+interface IconInputProps {
+  name: string;
+  iconType?: string;
+  iconColor?: string;
+}
 
 export const Container = styled.View.attrs(({theme}) => ({
   shadowOpacity: 7,
@@ -24,6 +31,7 @@ export const RateContainer = styled.View`
   margin: 3px;
   padding: 5px;
   justify-content: center;
+  flex-direction: row;
   border-radius: 6px;
   background-color: ${({theme}) => theme.Colors.COLOR_APPLICATION};
 `;
@@ -50,3 +58,11 @@ export const ImageBook = styled.Image`
   width: 170px;
   height: 260px;
 `;
+
+export const IconContainer = styled(Icon).attrs<IconInputProps>(
+  ({theme, name, iconType}) => ({
+    name,
+    size: theme.Sizes.ICON_SIZE_SMALL,
+    type: iconType,
+  }),
+)<IconInputProps>``;

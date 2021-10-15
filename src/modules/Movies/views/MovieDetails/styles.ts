@@ -27,8 +27,9 @@ export const ContainerDetails = styled.View`
 export const DetailsTitleText = styled(Text).attrs({
   fontSize: s(16),
 })`
-  font-family: 'OpenSans-Regular';
+  font-family: 'OpenSans-SemiBold';
   color: ${({theme}) => theme.Colors.TEXT_COLOR};
+  margin-bottom: 5px;
 `;
 
 export const DetailsText = styled(Text).attrs({
@@ -40,18 +41,28 @@ export const DetailsText = styled(Text).attrs({
 `;
 
 export const DescriptionText = styled(Text).attrs({
-  fontSize: 15,
+  fontSize: 16,
 })`
   font-family: 'OpenSans-Regular';
   margin-top: 10px;
-  text-align: center;
+  text-align: justify;
   color: ${({theme}) => theme.Colors.TEXT_COLOR};
+  padding: 10px;
 `;
 
 export const MovieTitle = styled(Text).attrs({
   fontSize: 22,
 })`
   font-family: 'OpenSans-Bold';
+  text-align: center;
+  font-weight: 600;
+  color: ${({theme}) => theme.Colors.TEXT_COLOR};
+`;
+
+export const MovieTagline = styled(Text).attrs({
+  fontSize: 18,
+})`
+  font-family: 'OpenSans-SemiBold';
   text-align: center;
   font-weight: 600;
   color: ${({theme}) => theme.Colors.TEXT_COLOR};

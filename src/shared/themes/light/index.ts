@@ -11,6 +11,7 @@ export default {
     FONTSIZE_LABEL: sfs(12),
     FONTSIZE_INPUT_LABEL: sfs(13),
     FONTSIZE_INPUT: sfs(16),
+    ICON_SIZE_SMALL: ms(16),
     ICON_SIZE: ms(22),
     ICON_SIZE_LG: ms(56),
   },

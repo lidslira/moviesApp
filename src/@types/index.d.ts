@@ -41,6 +41,7 @@ type SizingProps = {
   FONTSIZE_LABEL: number;
   ICON_SIZE_BUTTON: number;
   ICON_SIZE: number;
+  ICON_SIZE_SMALL: number;
 };
 
 // and extend them!
