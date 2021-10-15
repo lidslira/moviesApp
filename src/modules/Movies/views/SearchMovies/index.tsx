@@ -5,26 +5,36 @@ import {ThemeContext} from 'styled-components';
 import {Alert} from 'react-native';
 import {ApplicationState} from '~/shared/store';
 import {MoviesProps} from '~/dtos';
-import {cleanListAction, searchMoviesAction} from '../../store/ducks/actions';
+import {
+  cleanListAction,
+  getMovieAction,
+  searchMoviesAction,
+} from '../../store/ducks/actions';
 
 import * as S from './styles';
 import MovieCard from '~/modules/Movies/components/MovieCard';
 import Input from '~/shared/components/Input';
 import Button from '~/shared/components/GlobalButton';
 import {Header} from '~/shared/components/Header';
+import {MOVIE_DETAILS} from '~/shared/constants/routes';
 
 export const Search: React.FC = () => {
   const {searchedMovies, loading} = useSelector(
     (state: ApplicationState) => state.movies,
   );
   const {Colors} = useContext(ThemeContext);
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const [searchMovie, setSearchMovie] = useState<string>('');
 
-  const dispatch = useDispatch();
-
   const searchMoviesList = () => {
     dispatch(searchMoviesAction(searchMovie));
+  };
+
+  const goToMovieDetails = (movie: MoviesProps) => {
+    dispatch(getMovieAction(movie.id));
+    navigation.navigate(MOVIE_DETAILS, {movie});
   };
 
   const showAlertReset = () => {
@@ -34,11 +44,13 @@ export const Search: React.FC = () => {
     ]);
   };
 
-  const renderMovieList = ({item}: any) => <MovieCard movie={item} />;
+  const renderMovieList = ({item}: any) => (
+    <MovieCard movie={item} action={() => goToMovieDetails(item)} />
+  );
   return (
     <S.Container>
       <Header title="search movie" />
-      <S.TitleText>genres</S.TitleText>
+      <S.TitleText>genres[...]</S.TitleText>
       <Input
         iconLeft="magnify"
         placeholder="Search"

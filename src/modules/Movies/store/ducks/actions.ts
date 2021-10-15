@@ -9,6 +9,9 @@ import {
   SearchMoviesSuccessProps,
   SearchMoviesErrorProps,
   CleanListProps,
+  GetMovieProps,
+  GetMovieSuccessProps,
+  GetMovieErrorProps,
 } from './types';
 
 export const setMoviesAction = (): SetMoviesProps =>
@@ -32,6 +35,16 @@ export const searchMoviesSuccessAction = (
 
 export const searchMoviesErrorAction = (): SearchMoviesErrorProps =>
   action(MoviesTypes.SEARCH_MOVIES_ERROR);
+
+export const getMovieAction = (id: string): GetMovieProps =>
+  action(MoviesTypes.GET_MOVIE, {id});
+
+export const getMovieSuccessAction = (
+  movie: MoviesProps,
+): GetMovieSuccessProps => action(MoviesTypes.GET_MOVIE_SUCCESS, {movie});
+
+export const getMovieErrorAction = (): GetMovieErrorProps =>
+  action(MoviesTypes.GET_MOVIE_ERROR);
 
 export const cleanListAction = (): CleanListProps =>
   action(MoviesTypes.CLEAN_LIST);

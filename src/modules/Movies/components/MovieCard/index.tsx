@@ -6,10 +6,11 @@ import * as S from './styles';
 
 interface MovieCardProps {
   movie: MoviesProps;
+  action: () => void;
 }
 
-const MovieCard: React.FC<MovieCardProps> = ({movie}) => (
-  <S.Touchable>
+const MovieCard: React.FC<MovieCardProps> = ({movie, action}) => (
+  <S.Touchable onPress={() => action()}>
     <S.Container>
       <S.ImageBook source={{uri: IMG_PATH + movie.poster_path}} />
       <S.TitleBook fontSize={16}>{movie.title}</S.TitleBook>

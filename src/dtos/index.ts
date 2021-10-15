@@ -4,13 +4,13 @@ export interface GenresProps {
 }
 
 export interface MoviesProps {
-  adult: boolean;
   genres: GenresProps[];
   poster_path: string;
   original_title: string;
   original_language: string;
-  id: number;
-  imdb_id: string;
+  homepage: string;
+  id: string;
+  overview: string;
   release_date: string;
   status: string;
   tagline: string;

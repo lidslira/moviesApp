@@ -5,6 +5,26 @@ const INITIAL_STATE: MoviesState = {
   moviesList: [],
   loading: false,
   searchedMovies: [],
+  movie: {
+    poster_path: '',
+    original_title: '',
+    original_language: '',
+    genres: [
+      {
+        id: 0,
+        name: '',
+      },
+    ],
+    id: '',
+    release_date: '',
+    status: '',
+    tagline: '',
+    title: '',
+    vote_average: 0,
+    vote_count: 0,
+    overview: '',
+    homepage: '',
+  },
 };
 
 const reducer: Reducer<MoviesState> = (
@@ -46,8 +66,25 @@ const reducer: Reducer<MoviesState> = (
         loading: false,
         searchedMovies: [],
       };
+    case MoviesTypes.GET_MOVIE:
+      return {
+        ...state,
+        loading: true,
+      };
+    case MoviesTypes.GET_MOVIE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        movie: payload.movie,
+      };
+    case MoviesTypes.GET_MOVIE_ERROR:
+      return {
+        ...state,
+        loading: false,
+      };
     case MoviesTypes.CLEAN_LIST:
       return INITIAL_STATE;
+
     default:
       return state;
   }
