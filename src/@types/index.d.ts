@@ -29,6 +29,7 @@ type ColorsProps = {
   PLACEHOLDER: string;
   CARD_COLOR: string;
   CARD_BORDER_COLOR: string;
+  GENRE_CARD: string;
 };
 
 type SizingProps = {

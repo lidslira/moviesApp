@@ -4,4 +4,5 @@ export const MOVIES_PATH = `/discover/movie?sort_by=popularity.desc&${API_KEY}`;
 export const SEARCH_PATH = `search/movie?${API_KEY}&query=`;
 export const IMG_PATH = 'https://image.tmdb.org/t/p/w500';
 export const DETAILS_PATH = '/movie';
-// genres path https://api.themoviedb.org/3/genre/movie/list?${API_KEY}
+export const GENRES_PATH = `/genre/movie/list?${API_KEY}`;
+export const CREDITS_PATH = `/credits?${API_KEY}`;

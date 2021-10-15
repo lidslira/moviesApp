@@ -18,3 +18,17 @@ export interface MoviesProps {
   vote_average: number;
   vote_count: number;
 }
+
+export interface CastProps {
+  name: string;
+}
+
+export interface CrewProps {
+  name: string;
+}
+
+export interface CreditsProps {
+  id: string;
+  cast: CastProps[];
+  crew: CrewProps[];
+}

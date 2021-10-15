@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import {ThemeContext} from 'styled-components';
@@ -13,6 +13,7 @@ import {
 
 import * as S from './styles';
 import MovieCard from '~/modules/Movies/components/MovieCard';
+import GenreList from '../../components/GenresList';
 import Input from '~/shared/components/Input';
 import Button from '~/shared/components/GlobalButton';
 import {Header} from '~/shared/components/Header';
@@ -50,7 +51,7 @@ export const Search: React.FC = () => {
   return (
     <S.Container>
       <Header title="search movie" />
-      <S.TitleText>genres[...]</S.TitleText>
+      <GenreList />
       <Input
         iconLeft="magnify"
         placeholder="Search"

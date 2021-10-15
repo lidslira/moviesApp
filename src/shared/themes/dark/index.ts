@@ -40,5 +40,6 @@ export default {
     TAB_ICON: '#FFFF00',
     CARD_COLOR: '#000',
     CARD_BORDER_COLOR: '#FFFF00',
+    GENRE_CARD: '#FFFF00',
   },
 };
