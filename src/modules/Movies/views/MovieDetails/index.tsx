@@ -26,7 +26,7 @@ const MovieDetails: React.FC = () => {
   const handleGoBack = () => {
     navigation.goBack();
   };
-  console.tron.log(movie.homepage);
+
   const newDate = DateFormat(movie.release_date);
   return (
     <S.Container>

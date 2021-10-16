@@ -1,6 +1,7 @@
 import {
   API_KEY,
   DETAILS_PATH,
+  GENRES_PATH,
   MOVIES_PATH,
   SEARCH_PATH,
 } from '../constants/api';
@@ -27,6 +28,15 @@ export const searchMovies = async (text: string) => {
 export const movieDetails = async (id: string) => {
   try {
     const response = await request.get(DETAILS_PATH, '', id, API_KEY);
+    return response;
+  } catch {
+    return null;
+  }
+};
+
+export const moviesByGenre = async (id: string) => {
+  try {
+    const response = await request.get(GENRES_PATH, '', id);
     return response;
   } catch {
     return null;

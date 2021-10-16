@@ -1,19 +1,21 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {useNavigation} from '@react-navigation/native';
 import {ApplicationState} from '~/shared/store';
 import * as S from './styles';
 import {Genres} from '~/modules/Movies/constants';
+import {getMoviesByGenreAction} from '../../store/ducks/actions';
 
 const GenreList: React.FC = () => {
-  const {moviesList} = useSelector((state: ApplicationState) => state.movies);
-  const navigation = useNavigation();
   const dispatch = useDispatch();
 
+  const getMovieByGenres = (item: any) => {
+    dispatch(getMoviesByGenreAction(item.id));
+  };
+
   const renderGenreList = ({item}: any) => (
-    <S.Touchable>
+    <S.Touchable onPress={() => getMovieByGenres(item)}>
       <S.GenreContainer>
-        <S.TitleGenre fontSize={16}> {item.name}</S.TitleGenre>
+        <S.TitleGenre fontSize={15}> {item.name}</S.TitleGenre>
       </S.GenreContainer>
     </S.Touchable>
   );

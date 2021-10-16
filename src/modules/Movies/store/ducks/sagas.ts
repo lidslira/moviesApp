@@ -1,11 +1,14 @@
 import {all, takeLatest, call, put} from 'redux-saga/effects';
 import {
   movieDetails,
+  moviesByGenre,
   searchMovies,
   showMoviesList,
 } from '~/shared/services/movies';
 import {
   getMovieErrorAction,
+  getMoviesByGenreErrorAction,
+  getMoviesByGenreSuccessAction,
   getMovieSuccessAction,
   searchMoviesErrorAction,
   searchMoviesSuccessAction,
@@ -13,7 +16,12 @@ import {
   setMoviesSuccessAction,
 } from './actions';
 
-import {GetMovieProps, MoviesTypes, SearchMoviesProps} from './types';
+import {
+  GetMovieProps,
+  GetMoviesByGenreProps,
+  MoviesTypes,
+  SearchMoviesProps,
+} from './types';
 
 export interface ResponseGenerator {
   config?: any;
@@ -70,10 +78,28 @@ function* getMovieSagas(action: GetMovieProps) {
     yield put(getMovieErrorAction());
   }
 }
+
+function* getMoviesByGenreSagas(action: GetMoviesByGenreProps) {
+  try {
+    const response: ResponseGenerator = yield call(
+      moviesByGenre,
+      action.payload.id,
+    );
+
+    if (response.status >= 200 && response.status < 300) {
+      yield put(getMoviesByGenreSuccessAction(response.data.results));
+    } else {
+      yield put(getMoviesByGenreErrorAction());
+    }
+  } catch {
+    yield put(getMoviesByGenreErrorAction());
+  }
+}
 export default function* watchSaga() {
   yield all([
     takeLatest(MoviesTypes.SET_MOVIES, setMoviesSagas),
     takeLatest(MoviesTypes.SEARCH_MOVIES, searchMoviesSagas),
     takeLatest(MoviesTypes.GET_MOVIE, getMovieSagas),
+    takeLatest(MoviesTypes.GET_MOVIES_BY_GENRE, getMoviesByGenreSagas),
   ]);
 }

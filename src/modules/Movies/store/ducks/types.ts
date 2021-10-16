@@ -14,6 +14,10 @@ export enum MoviesTypes {
   GET_MOVIE_SUCCESS = '@movies/GET_MOVIE_SUCCESS',
   GET_MOVIE_ERROR = '@movies/GET_MOVIE_ERROR',
 
+  GET_MOVIES_BY_GENRE = '@genres/GET_MOVIE_BY_GENRES',
+  GET_MOVIES_BY_GENRE_SUCCESS = '@genres/GET_MOVIES_BY_GENRE_SUCCESS',
+  GET_MOVIES_BY_GENRE_ERROR = '@genres/GET_MOVIES_BY_GENRE_ERROR',
+
   CLEAN_LIST = '@movies/CLEAN_LIST',
 }
 
@@ -22,6 +26,7 @@ export interface MoviesState {
   loading: boolean;
   searchedMovies: [];
   movie: MoviesProps;
+  moviesByGenre: [];
 }
 
 export interface SetMoviesProps extends Action {
@@ -63,6 +68,20 @@ export interface GetMovieSuccessProps extends Action {
 
 export interface GetMovieErrorProps extends Action {
   type: MoviesTypes.GET_MOVIE_ERROR;
+}
+
+export interface GetMoviesByGenreProps extends Action {
+  type: MoviesTypes.GET_MOVIES_BY_GENRE;
+  payload: {id: string};
+}
+
+export interface GetMoviesByGenreSuccessProps extends Action {
+  type: MoviesTypes.GET_MOVIES_BY_GENRE_SUCCESS;
+  payload: {moviesByGenre: MoviesProps};
+}
+
+export interface GetMoviesByGenreErrorProps extends Action {
+  type: MoviesTypes.GET_MOVIES_BY_GENRE_ERROR;
 }
 
 export interface CleanListProps extends Action {

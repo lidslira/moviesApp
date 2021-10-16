@@ -26,7 +26,11 @@ export const MovieInfoText = styled(Text).attrs({
 `;
 
 export const List = styled.FlatList`
-  padding-top: 15px;
+  padding-top: 5px;
+  margin-bottom: 5px;
+`;
+export const GenresList = styled.FlatList`
+  padding-top: 5px;
   margin-bottom: 5px;
 `;
 

@@ -12,6 +12,9 @@ import {
   GetMovieProps,
   GetMovieSuccessProps,
   GetMovieErrorProps,
+  GetMoviesByGenreProps,
+  GetMoviesByGenreSuccessProps,
+  GetMoviesByGenreErrorProps,
 } from './types';
 
 export const setMoviesAction = (): SetMoviesProps =>
@@ -45,6 +48,17 @@ export const getMovieSuccessAction = (
 
 export const getMovieErrorAction = (): GetMovieErrorProps =>
   action(MoviesTypes.GET_MOVIE_ERROR);
+
+export const getMoviesByGenreAction = (id: string): GetMoviesByGenreProps =>
+  action(MoviesTypes.GET_MOVIES_BY_GENRE, {id});
+
+export const getMoviesByGenreSuccessAction = (
+  moviesByGenre: MoviesProps,
+): GetMoviesByGenreSuccessProps =>
+  action(MoviesTypes.GET_MOVIES_BY_GENRE_SUCCESS, {moviesByGenre});
+
+export const getMoviesByGenreErrorAction = (): GetMoviesByGenreErrorProps =>
+  action(MoviesTypes.GET_MOVIES_BY_GENRE_ERROR);
 
 export const cleanListAction = (): CleanListProps =>
   action(MoviesTypes.CLEAN_LIST);

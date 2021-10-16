@@ -6,6 +6,7 @@ const INITIAL_STATE: MoviesState = {
   moviesList: [],
   loading: false,
   searchedMovies: [],
+  moviesByGenre: [],
   movie: {
     poster_path: '',
     original_title: '',
@@ -84,6 +85,24 @@ const reducer: Reducer<MoviesState> = (
       return {
         ...state,
         loading: false,
+        movie: [],
+      };
+    case MoviesTypes.GET_MOVIES_BY_GENRE:
+      return {
+        ...state,
+        loading: true,
+      };
+    case MoviesTypes.GET_MOVIES_BY_GENRE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        moviesByGenre: payload.moviesByGenre,
+      };
+    case MoviesTypes.GET_MOVIES_BY_GENRE_ERROR:
+      return {
+        ...state,
+        loading: false,
+        moviesByGenre: [],
       };
     case MoviesTypes.CLEAN_LIST:
       return INITIAL_STATE;

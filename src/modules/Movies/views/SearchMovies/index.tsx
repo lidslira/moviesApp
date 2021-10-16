@@ -20,7 +20,7 @@ import {Header} from '~/shared/components/Header';
 import {MOVIE_DETAILS} from '~/shared/constants/routes';
 
 export const Search: React.FC = () => {
-  const {searchedMovies, loading} = useSelector(
+  const {searchedMovies, moviesByGenre, loading} = useSelector(
     (state: ApplicationState) => state.movies,
   );
   const {Colors} = useContext(ThemeContext);
@@ -64,7 +64,7 @@ export const Search: React.FC = () => {
       />
       {loading ? (
         <S.Indicator size="large" />
-      ) : searchedMovies.length ? null : (
+      ) : searchedMovies.length || moviesByGenre.length ? null : (
         <Button action={() => searchMoviesList()} title="search" />
       )}
       <S.List
@@ -76,6 +76,17 @@ export const Search: React.FC = () => {
         showsVerticalScrollIndicator={false}
         ListFooterComponent={<S.Footer />}
       />
+      {moviesByGenre.length ? (
+        <S.GenresList
+          data={moviesByGenre}
+          extraData={moviesByGenre}
+          renderItem={renderMovieList}
+          numColumns={2}
+          keyExtractor={(item: any) => item.id.toString()}
+          showsVerticalScrollIndicator={false}
+          ListFooterComponent={<S.Footer />}
+        />
+      ) : null}
     </S.Container>
   );
 };

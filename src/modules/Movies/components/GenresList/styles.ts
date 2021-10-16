@@ -38,5 +38,5 @@ export const Container = styled.View`
   flex: 0.25;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  margin: 10px 0px 0px 0px;
 `;

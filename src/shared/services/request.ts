@@ -11,7 +11,7 @@ export default {
     id?: string,
     API_KEY?: string,
   ) {
-    const url = `${path}${id ? `/${id}` : ''}${params ? `${params.text}` : ''}${
+    const url = `${path}${id ? `${id}` : ''}${params ? `${params.text}` : ''}${
       API_KEY ? `?${API_KEY}` : ''
     }`;
 
