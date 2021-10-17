@@ -70,7 +70,7 @@ function* getMovieSagas(action: GetMovieProps) {
     );
 
     if (response.status >= 200 && response.status < 300) {
-      yield put(getMovieSuccessAction(response.data.results));
+      yield put(getMovieSuccessAction(response.data));
     } else {
       yield put(getMovieErrorAction());
     }

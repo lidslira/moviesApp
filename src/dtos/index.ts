@@ -4,7 +4,12 @@ export interface GenresProps {
 }
 
 export interface MoviesProps {
-  genres: GenresProps[];
+  genres: [
+    {
+      id: number;
+      name: string;
+    },
+  ];
   poster_path: string;
   original_title: string;
   original_language: string;

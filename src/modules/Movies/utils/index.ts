@@ -1,3 +1,5 @@
+import {GenresProps, MoviesProps} from '~/dtos';
+
 export const DateFormat = (realeaseDate: string) => {
   const meses = [
     'Jan',
@@ -18,4 +20,9 @@ export const DateFormat = (realeaseDate: string) => {
     meses[data.getMonth()]
   } ${data.getFullYear()}`;
   return dataFormatada;
+};
+
+export const MovieGenres = (genre: any[]) => {
+  const newArray = genre.map((item) => item.name).join(', ');
+  return newArray;
 };

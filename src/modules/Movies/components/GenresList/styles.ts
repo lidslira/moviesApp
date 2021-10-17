@@ -35,8 +35,8 @@ export const List = styled.FlatList`
 `;
 
 export const Container = styled.View`
-  flex: 0.25;
-  justify-content: center;
-  align-items: center;
+  flex: 0.3;
+  justify-content: flex-start;
+  align-items: flex-start;
   margin: 10px 0px 0px 0px;
 `;

@@ -1,6 +1,5 @@
 import React, {useContext} from 'react';
 import {Image, Linking, Text} from 'react-native';
-import {useRoute} from '@react-navigation/native';
 import {useNavigation} from '@react-navigation/core';
 
 import {s} from 'react-native-size-matters';
@@ -11,23 +10,21 @@ import {Header} from '~/shared/components/Header';
 import * as S from './styles';
 import {ApplicationState} from '~/shared/store';
 import {IMG_PATH} from '~/shared/constants/api';
-import {DateFormat} from '../../utils';
+import {DateFormat, MovieGenres} from '../../utils';
 
 const MovieDetails: React.FC = () => {
   const {Colors} = useContext(ThemeContext);
 
-  // const {movie} = useSelector((state: ApplicationState) => state.movies);
-
-  const route = useRoute();
-  const {movie} = route.params;
+  const {movie} = useSelector((state: ApplicationState) => state.movies);
 
   const navigation = useNavigation();
 
   const handleGoBack = () => {
     navigation.goBack();
   };
-
   const newDate = DateFormat(movie.release_date);
+  const genres = MovieGenres(movie.genres);
+
   return (
     <S.Container>
       <Header title="movie details" isFocused action={() => handleGoBack()} />
@@ -49,44 +46,33 @@ const MovieDetails: React.FC = () => {
             <S.MovieTagline> {movie.tagline} </S.MovieTagline>
           ) : null}
         </S.ContainerName>
+        <S.ContainerTitleDetails>
+          <S.DetailsText>
+            IMDB: {movie.vote_average} | {newDate}
+          </S.DetailsText>
+          <S.DetailsGenreText>{genres}</S.DetailsGenreText>
+        </S.ContainerTitleDetails>
 
         <S.ContainerDetails>
           <S.ContainerTitleDetails>
             <S.DescriptionText>{movie.overview}</S.DescriptionText>
           </S.ContainerTitleDetails>
         </S.ContainerDetails>
-        <S.ContainerTitleDetails>
-          <S.DetailsTitleText>Genres</S.DetailsTitleText>
-          <S.DetailsText>{movie.genres}</S.DetailsText>
-        </S.ContainerTitleDetails>
         <S.ContainerDetails>
           <S.ContainerTitleDetails>
-            <S.DetailsTitleText>Release Date</S.DetailsTitleText>
-            <S.DetailsText>{newDate}</S.DetailsText>
-          </S.ContainerTitleDetails>
-          <S.ContainerTitleDetails>
-            <S.DetailsTitleText>IMDB</S.DetailsTitleText>
-            <S.DetailsText>
-              vote average: {movie.vote_average} | vote count:{' '}
-              {movie.vote_count}
-            </S.DetailsText>
-          </S.ContainerTitleDetails>
-
-          <S.ContainerTitleDetails>
-            <S.DetailsText>
-              Is this movie called your attention? {`\n`}
-              <Text
-                style={{
-                  color: Colors.CLICKABLE_TEXT,
-                  fontSize: 15,
-                  textAlign: 'center',
-                }}
-                onPress={() => {
-                  Linking.openURL(movie.homepage);
-                }}>
-                Find more informations about it here!
-              </Text>
-            </S.DetailsText>
+            <Text
+              style={{
+                color: Colors.CLICKABLE_TEXT,
+                fontSize: 16,
+                fontFamily: 'OpenSans-Regular',
+                textAlign: 'center',
+                marginBottom: 20,
+              }}
+              onPress={() => {
+                Linking.openURL(movie.homepage);
+              }}>
+              Find more informations about it here!
+            </Text>
           </S.ContainerTitleDetails>
         </S.ContainerDetails>
       </S.BookInfoContainer>

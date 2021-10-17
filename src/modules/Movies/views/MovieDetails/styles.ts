@@ -16,9 +16,7 @@ export const ContainerImage = styled.View`
 `;
 
 export const ContainerDetails = styled.View`
-  width: 100%;
-  margin-bottom: ${vs(20)}px;
-  justify-content: space-between;
+  margin-bottom: ${vs(10)}px;
   align-items: center;
   padding: 10px;
   background: ${({theme}) => theme.Colors.BACKGROUND};
@@ -33,9 +31,18 @@ export const DetailsTitleText = styled(Text).attrs({
 `;
 
 export const DetailsText = styled(Text).attrs({
-  fontSize: 15,
+  fontSize: 16,
 })`
-  font-family: 'OpenSans-Regular';
+  margin-top: 5px;
+  font-family: 'OpenSans-SemiBold';
+  color: ${({theme}) => theme.Colors.TEXT_COLOR};
+  text-align: center;
+`;
+export const DetailsGenreText = styled(Text).attrs({
+  fontSize: 16,
+})`
+  margin-top: 5px;
+  font-family: 'OpenSans-SemiBold';
   color: ${({theme}) => theme.Colors.TEXT_COLOR};
   text-align: center;
 `;
@@ -60,17 +67,15 @@ export const MovieTitle = styled(Text).attrs({
 `;
 
 export const MovieTagline = styled(Text).attrs({
-  fontSize: 18,
+  fontSize: 16.9,
 })`
   font-family: 'OpenSans-SemiBold';
   text-align: center;
-  font-weight: 600;
   color: ${({theme}) => theme.Colors.TEXT_COLOR};
+  margin-bottom: 5px;
 `;
 
 export const ContainerName = styled.View`
-  width: 100%;
-  margin-bottom: ${vs(10)}px;
   margin-top: ${vs(10)}px;
   justify-content: center;
   align-items: center;
@@ -78,7 +83,6 @@ export const ContainerName = styled.View`
 `;
 
 export const ContainerTitleDetails = styled.View`
-  margin-bottom: ${vs(10)}px;
   justify-content: center;
   align-items: center;
 `;
