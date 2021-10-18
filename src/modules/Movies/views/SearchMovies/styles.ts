@@ -3,7 +3,7 @@ import {s} from '~/shared/utils/responsibleText';
 
 import Text from '~/shared/components/Text';
 
-export const Container = styled.View`
+export const Container = styled.KeyboardAvoidingView`
   flex: 1;
   justify-content: center;
   align-items: center;
@@ -26,11 +26,11 @@ export const MovieInfoText = styled(Text).attrs({
 `;
 
 export const List = styled.FlatList`
-  padding-top: 5px;
+  padding-top: 15px;
   margin-bottom: 5px;
 `;
 export const GenresList = styled.FlatList`
-  padding-top: 5px;
+  padding-top: 15px;
   margin-bottom: 5px;
 `;
 
@@ -40,4 +40,8 @@ export const Indicator = styled.ActivityIndicator`
 
 export const Footer = styled.View`
   height: ${s(40)}px;
+`;
+
+export const ListsContainer = styled.View`
+  flex: 2;
 `;

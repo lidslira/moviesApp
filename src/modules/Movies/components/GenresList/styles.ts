@@ -31,12 +31,11 @@ export const TitleGenre = styled(Text)`
 `;
 
 export const List = styled.FlatList`
+  flex: 1;
   padding-top: 10px;
 `;
 
-export const Container = styled.View`
+export const Container = styled.KeyboardAvoidingView`
   flex: 0.3;
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin: 10px 0px 0px 0px;
+  margin: 10px 0px 10px 0px;
 `;
