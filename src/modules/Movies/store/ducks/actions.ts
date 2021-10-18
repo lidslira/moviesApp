@@ -1,5 +1,5 @@
 import {action} from 'typesafe-actions';
-import {MoviesProps} from '~/dtos';
+import {CreditsProps, MoviesProps} from '~/dtos';
 import {
   MoviesTypes,
   SetMoviesProps,
@@ -15,6 +15,9 @@ import {
   GetMoviesByGenreProps,
   GetMoviesByGenreSuccessProps,
   GetMoviesByGenreErrorProps,
+  GetMovieCreditsProps,
+  GetMovieCreditsErrorProps,
+  GetMovieCreditsSuccessProps,
 } from './types';
 
 export const setMoviesAction = (): SetMoviesProps =>
@@ -59,6 +62,17 @@ export const getMoviesByGenreSuccessAction = (
 
 export const getMoviesByGenreErrorAction = (): GetMoviesByGenreErrorProps =>
   action(MoviesTypes.GET_MOVIES_BY_GENRE_ERROR);
+
+export const getMovieCreditsAction = (id: string): GetMovieCreditsProps =>
+  action(MoviesTypes.GET_MOVIE_CREDITS, {id});
+
+export const getMovieCreditsSuccessAction = (
+  creditsDetails: CreditsProps,
+): GetMovieCreditsSuccessProps =>
+  action(MoviesTypes.GET_MOVIE_CREDITS_SUCCESS, {creditsDetails});
+
+export const getMovieCreditsErrorAction = (): GetMovieCreditsErrorProps =>
+  action(MoviesTypes.GET_MOVIE_CREDITS_ERROR);
 
 export const cleanListAction = (): CleanListProps =>
   action(MoviesTypes.CLEAN_LIST);

@@ -1,5 +1,6 @@
 import {
   API_KEY,
+  CREDITS_PATH,
   DETAILS_PATH,
   GENRES_PATH,
   MOVIES_PATH,
@@ -27,7 +28,7 @@ export const searchMovies = async (text: string) => {
 
 export const movieDetails = async (id: string) => {
   try {
-    const response = await request.get(DETAILS_PATH, '', id, API_KEY);
+    const response = await request.get(DETAILS_PATH, '', id, '', API_KEY);
     return response;
   } catch {
     return null;
@@ -37,6 +38,15 @@ export const movieDetails = async (id: string) => {
 export const moviesByGenre = async (id: string) => {
   try {
     const response = await request.get(GENRES_PATH, '', id);
+    return response;
+  } catch {
+    return null;
+  }
+};
+
+export const movieCreditsDetails = async (id: string) => {
+  try {
+    const response = await request.get(DETAILS_PATH, '', id, CREDITS_PATH);
     return response;
   } catch {
     return null;

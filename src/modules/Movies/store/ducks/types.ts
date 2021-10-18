@@ -1,5 +1,5 @@
 import {Action} from 'redux';
-import {MoviesProps} from '~/dtos';
+import {CreditsProps, MoviesProps} from '~/dtos';
 
 export enum MoviesTypes {
   SET_MOVIES = '@movies/SET_MOVIES',
@@ -14,6 +14,10 @@ export enum MoviesTypes {
   GET_MOVIE_SUCCESS = '@movies/GET_MOVIE_SUCCESS',
   GET_MOVIE_ERROR = '@movies/GET_MOVIE_ERROR',
 
+  GET_MOVIE_CREDITS = '@cast/GET_MOVIE_CREDITS',
+  GET_MOVIE_CREDITS_SUCCESS = '@cast/GET_MOVIE_CREDITS_SUCCESS',
+  GET_MOVIE_CREDITS_ERROR = '@cast/GET_MOVIE_CREDITS_ERROR',
+
   GET_MOVIES_BY_GENRE = '@genres/GET_MOVIE_BY_GENRES',
   GET_MOVIES_BY_GENRE_SUCCESS = '@genres/GET_MOVIES_BY_GENRE_SUCCESS',
   GET_MOVIES_BY_GENRE_ERROR = '@genres/GET_MOVIES_BY_GENRE_ERROR',
@@ -27,6 +31,7 @@ export interface MoviesState {
   searchedMovies: [];
   movie: MoviesProps;
   moviesByGenre: [];
+  creditsDetails: CreditsProps;
 }
 
 export interface SetMoviesProps extends Action {
@@ -82,6 +87,20 @@ export interface GetMoviesByGenreSuccessProps extends Action {
 
 export interface GetMoviesByGenreErrorProps extends Action {
   type: MoviesTypes.GET_MOVIES_BY_GENRE_ERROR;
+}
+
+export interface GetMovieCreditsProps extends Action {
+  type: MoviesTypes.GET_MOVIE_CREDITS;
+  payload: {id: string};
+}
+
+export interface GetMovieCreditsSuccessProps extends Action {
+  type: MoviesTypes.GET_MOVIE_CREDITS_SUCCESS;
+  payload: {creditsDetails: CreditsProps};
+}
+
+export interface GetMovieCreditsErrorProps extends Action {
+  type: MoviesTypes.GET_MOVIE_CREDITS_ERROR;
 }
 
 export interface CleanListProps extends Action {

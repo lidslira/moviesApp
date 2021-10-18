@@ -1,14 +1,17 @@
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {ApplicationState} from '~/shared/store';
+import {useDispatch} from 'react-redux';
 import * as S from './styles';
 import {Genres} from '~/modules/Movies/constants';
-import {getMoviesByGenreAction} from '../../store/ducks/actions';
+import {
+  cleanListAction,
+  getMoviesByGenreAction,
+} from '../../store/ducks/actions';
 
 const GenreList: React.FC = () => {
   const dispatch = useDispatch();
 
   const getMovieByGenres = (item: any) => {
+    dispatch(cleanListAction());
     dispatch(getMoviesByGenreAction(item.id));
   };
 

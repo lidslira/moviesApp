@@ -7,6 +7,16 @@ const INITIAL_STATE: MoviesState = {
   loading: false,
   searchedMovies: [],
   moviesByGenre: [],
+  creditsDetails: {
+    id: '',
+    cast: [{name: ''}],
+    crew: [
+      {
+        known_for_department: '',
+        name: '',
+      },
+    ],
+  },
   movie: {
     poster_path: '',
     original_title: '',
@@ -103,6 +113,23 @@ const reducer: Reducer<MoviesState> = (
         ...state,
         loading: false,
         moviesByGenre: [],
+      };
+    case MoviesTypes.GET_MOVIE_CREDITS:
+      return {
+        ...state,
+        loading: true,
+      };
+    case MoviesTypes.GET_MOVIE_CREDITS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        creditsDetails: payload.creditsDetails,
+      };
+    case MoviesTypes.GET_MOVIE_CREDITS_ERROR:
+      return {
+        ...state,
+        loading: false,
+        creditsDetails: [],
       };
     case MoviesTypes.CLEAN_LIST:
       return INITIAL_STATE;

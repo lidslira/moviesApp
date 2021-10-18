@@ -1,5 +1,3 @@
-import {GenresProps, MoviesProps} from '~/dtos';
-
 export const DateFormat = (realeaseDate: string) => {
   const meses = [
     'Jan',
@@ -23,6 +21,22 @@ export const DateFormat = (realeaseDate: string) => {
 };
 
 export const MovieGenres = (genre: any[]) => {
-  const newArray = genre.map((item) => item.name).join(', ');
+  const newArray = genre
+    .map((item) => item.name)
+    .join(', ')
+    .replace(/, ([^,]*)$/, ' and $1');
   return newArray;
+};
+
+export const CreditsDetails = (credits: any[]) => {
+  const newArray: any[] = [];
+  let uniqueArr: any[] = [];
+  credits.map((item) => {
+    if (item.known_for_department === 'Directing') {
+      return newArray.push(item.name);
+    }
+    return null;
+  });
+  uniqueArr = [...new Set(newArray)];
+  return uniqueArr.join(', ').replace(/, ([^,]*)$/, ' and $1');
 };

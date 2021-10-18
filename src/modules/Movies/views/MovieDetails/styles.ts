@@ -23,7 +23,7 @@ export const ContainerDetails = styled.View`
 `;
 
 export const DetailsTitleText = styled(Text).attrs({
-  fontSize: s(16),
+  fontSize: s(16.9),
 })`
   font-family: 'OpenSans-SemiBold';
   color: ${({theme}) => theme.Colors.TEXT_COLOR};
@@ -31,24 +31,35 @@ export const DetailsTitleText = styled(Text).attrs({
 `;
 
 export const DetailsText = styled(Text).attrs({
-  fontSize: 16,
+  fontSize: 16.9,
 })`
   margin-top: 5px;
-  font-family: 'OpenSans-SemiBold';
+  font-family: 'OpenSans-Regular';
   color: ${({theme}) => theme.Colors.TEXT_COLOR};
   text-align: center;
 `;
-export const DetailsGenreText = styled(Text).attrs({
-  fontSize: 16,
+
+export const CreditsText = styled(Text).attrs({
+  fontSize: 16.9,
 })`
-  margin-top: 5px;
-  font-family: 'OpenSans-SemiBold';
+  margin: 15px 5px 5px 5px;
+  padding: 10px;
+  font-family: 'OpenSans-Regular';
+  color: ${({theme}) => theme.Colors.TEXT_COLOR};
+  text-align: center;
+`;
+
+export const DetailsGenreText = styled(Text).attrs({
+  fontSize: 16.6,
+})`
+  margin: 15px 5px 5px 5px;
+  font-family: 'OpenSans-Regular';
   color: ${({theme}) => theme.Colors.TEXT_COLOR};
   text-align: center;
 `;
 
 export const DescriptionText = styled(Text).attrs({
-  fontSize: 16,
+  fontSize: 16.9,
 })`
   font-family: 'OpenSans-Regular';
   margin-top: 10px;

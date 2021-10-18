@@ -2,12 +2,13 @@ import React, {useContext, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import {ThemeContext} from 'styled-components';
-import {Alert} from 'react-native';
+import {Alert, KeyboardAvoidingView} from 'react-native';
 import {ApplicationState} from '~/shared/store';
 import {MoviesProps} from '~/dtos';
 import {
   cleanListAction,
   getMovieAction,
+  getMovieCreditsAction,
   searchMoviesAction,
 } from '../../store/ducks/actions';
 
@@ -16,7 +17,6 @@ import MovieCard from '~/modules/Movies/components/MovieCard';
 import GenreList from '../../components/GenresList';
 import Input from '~/shared/components/Input';
 import Button from '~/shared/components/GlobalButton';
-import {Header} from '~/shared/components/Header';
 import {MOVIE_DETAILS} from '~/shared/constants/routes';
 
 export const Search: React.FC = () => {
@@ -30,11 +30,13 @@ export const Search: React.FC = () => {
   const [searchMovie, setSearchMovie] = useState<string>('');
 
   const searchMoviesList = () => {
+    dispatch(cleanListAction());
     dispatch(searchMoviesAction(searchMovie));
   };
 
   const goToMovieDetails = (movie: MoviesProps) => {
     dispatch(getMovieAction(movie.id));
+    dispatch(getMovieCreditsAction(movie.id));
     navigation.navigate(MOVIE_DETAILS, {movie});
   };
 
@@ -49,44 +51,47 @@ export const Search: React.FC = () => {
     <MovieCard movie={item} action={() => goToMovieDetails(item)} />
   );
   return (
-    <S.Container>
-      <Header title="search movie" />
-      <GenreList />
-      <Input
-        iconLeft="magnify"
-        placeholder="Search"
-        placeholderTextColor={Colors.PLACEHOLDER}
-        value={searchMovie}
-        onChangeText={setSearchMovie}
-        iconRight="autorenew"
-        actionIconRight={() => showAlertReset()}
-        onSubmitEditing={() => searchMoviesList()}
-      />
-      {loading ? (
-        <S.Indicator size="large" />
-      ) : searchedMovies.length || moviesByGenre.length ? null : (
-        <Button action={() => searchMoviesList()} title="search" />
-      )}
-      <S.List
-        data={searchedMovies}
-        extraData={searchedMovies}
-        renderItem={renderMovieList}
-        numColumns={2}
-        keyExtractor={(item: any) => item.id.toString()}
-        showsVerticalScrollIndicator={false}
-        ListFooterComponent={<S.Footer />}
-      />
-      {moviesByGenre.length ? (
-        <S.GenresList
-          data={moviesByGenre}
-          extraData={moviesByGenre}
-          renderItem={renderMovieList}
-          numColumns={2}
-          keyExtractor={(item: any) => item.id.toString()}
-          showsVerticalScrollIndicator={false}
-          ListFooterComponent={<S.Footer />}
+    <KeyboardAvoidingView behavior="height" style={{flex: 1}} enabled={false}>
+      <S.Container>
+        <GenreList />
+        <Input
+          iconLeft="magnify"
+          placeholder="Search"
+          placeholderTextColor={Colors.PLACEHOLDER}
+          value={searchMovie}
+          onChangeText={setSearchMovie}
+          iconRight="autorenew"
+          actionIconRight={() => showAlertReset()}
+          onSubmitEditing={() => searchMoviesList()}
         />
-      ) : null}
-    </S.Container>
+        {loading ? (
+          <S.Indicator size="large" />
+        ) : searchedMovies.length || moviesByGenre.length ? null : (
+          <Button action={() => searchMoviesList()} title="search" />
+        )}
+        <S.ListsContainer>
+          <S.List
+            data={searchedMovies}
+            extraData={searchedMovies}
+            renderItem={renderMovieList}
+            numColumns={2}
+            keyExtractor={(item: any) => item.id.toString()}
+            showsVerticalScrollIndicator={false}
+            ListFooterComponent={<S.Footer />}
+          />
+          {moviesByGenre.length ? (
+            <S.GenresList
+              data={moviesByGenre}
+              extraData={moviesByGenre}
+              renderItem={renderMovieList}
+              numColumns={2}
+              keyExtractor={(item: any) => item.id.toString()}
+              showsVerticalScrollIndicator={false}
+              ListFooterComponent={<S.Footer />}
+            />
+          ) : null}
+        </S.ListsContainer>
+      </S.Container>
+    </KeyboardAvoidingView>
   );
 };

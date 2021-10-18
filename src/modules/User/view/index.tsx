@@ -153,7 +153,7 @@ const Profile: React.FC = () => {
         </S.ContainerSelect>
         <Input
           iconLeft="earth"
-          placeholder="Enter your country"
+          placeholder="Enter your address"
           placeholderTextColor={Colors.PLACEHOLDER}
           value={values.country}
           onChangeText={handleChange('country')}

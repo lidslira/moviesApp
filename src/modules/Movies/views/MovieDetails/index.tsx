@@ -10,12 +10,14 @@ import {Header} from '~/shared/components/Header';
 import * as S from './styles';
 import {ApplicationState} from '~/shared/store';
 import {IMG_PATH} from '~/shared/constants/api';
-import {DateFormat, MovieGenres} from '../../utils';
+import {CreditsDetails, DateFormat, MovieGenres} from '../../utils';
 
 const MovieDetails: React.FC = () => {
   const {Colors} = useContext(ThemeContext);
 
-  const {movie} = useSelector((state: ApplicationState) => state.movies);
+  const {movie, creditsDetails} = useSelector(
+    (state: ApplicationState) => state.movies,
+  );
 
   const navigation = useNavigation();
 
@@ -24,6 +26,7 @@ const MovieDetails: React.FC = () => {
   };
   const newDate = DateFormat(movie.release_date);
   const genres = MovieGenres(movie.genres);
+  const credits = CreditsDetails(creditsDetails.crew);
 
   return (
     <S.Container>
@@ -51,6 +54,7 @@ const MovieDetails: React.FC = () => {
             IMDB: {movie.vote_average} | {newDate}
           </S.DetailsText>
           <S.DetailsGenreText>{genres}</S.DetailsGenreText>
+          <S.CreditsText>Direction: {credits} </S.CreditsText>
         </S.ContainerTitleDetails>
 
         <S.ContainerDetails>
@@ -63,7 +67,7 @@ const MovieDetails: React.FC = () => {
             <Text
               style={{
                 color: Colors.CLICKABLE_TEXT,
-                fontSize: 16,
+                fontSize: 16.5,
                 fontFamily: 'OpenSans-Regular',
                 textAlign: 'center',
                 marginBottom: 20,

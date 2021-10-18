@@ -9,11 +9,12 @@ export default {
     path?: string,
     params?: ParamsProps,
     id?: string,
-    API_KEY?: string,
+    credits?: string,
+    key?: string,
   ) {
     const url = `${path}${id ? `${id}` : ''}${params ? `${params.text}` : ''}${
-      API_KEY ? `?${API_KEY}` : ''
-    }`;
+      credits ? `${credits}` : ''
+    }${key ? `?${key}` : ''}`;
 
     return api.get(url);
   },
