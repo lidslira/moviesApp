@@ -9,7 +9,7 @@ import {Header} from '~/shared/components/Header';
 
 import * as S from './styles';
 import {ApplicationState} from '~/shared/store';
-import {IMG_PATH} from '~/shared/constants/api';
+import {IMG_PATH} from '~/modules/Movies/constants/api';
 import {CreditsDetails, DateFormat, MovieGenres} from '../../utils';
 
 const MovieDetails: React.FC = () => {
@@ -62,23 +62,25 @@ const MovieDetails: React.FC = () => {
             <S.DescriptionText>{movie.overview}</S.DescriptionText>
           </S.ContainerTitleDetails>
         </S.ContainerDetails>
-        <S.ContainerDetails>
-          <S.ContainerTitleDetails>
-            <Text
-              style={{
-                color: Colors.CLICKABLE_TEXT,
-                fontSize: 16.5,
-                fontFamily: 'OpenSans-Regular',
-                textAlign: 'center',
-                marginBottom: 20,
-              }}
-              onPress={() => {
-                Linking.openURL(movie.homepage);
-              }}>
-              Find more informations about it here!
-            </Text>
-          </S.ContainerTitleDetails>
-        </S.ContainerDetails>
+        {movie.homepage ? (
+          <S.ContainerDetails>
+            <S.ContainerTitleDetails>
+              <Text
+                style={{
+                  color: Colors.CLICKABLE_TEXT,
+                  fontSize: 16.5,
+                  fontFamily: 'OpenSans-Regular',
+                  textAlign: 'center',
+                  marginBottom: 20,
+                }}
+                onPress={() => {
+                  Linking.openURL(movie.homepage);
+                }}>
+                Find more informations about it here!
+              </Text>
+            </S.ContainerTitleDetails>
+          </S.ContainerDetails>
+        ) : null}
       </S.BookInfoContainer>
     </S.Container>
   );

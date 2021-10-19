@@ -21,7 +21,7 @@ import {LIST_GENDERS} from '../constants';
 import * as S from './styles';
 import {ApplicationState} from '~/shared/store';
 import {UserProps} from '~/modules/User/store/ducks/types';
-import RadioButtonList from '~/shared/components/RadioButton/RadioButtonList';
+import RadioButtonList from '~/modules/User/components/RadioButton/RadioButtonList';
 
 const Profile: React.FC = () => {
   const {Colors} = useContext(ThemeContext);

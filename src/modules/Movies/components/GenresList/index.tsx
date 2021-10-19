@@ -1,7 +1,7 @@
 import React from 'react';
 import {useDispatch} from 'react-redux';
 import * as S from './styles';
-import {Genres} from '~/modules/Movies/constants';
+import {Genres} from '~/modules/Movies/constants/mock';
 import {
   cleanListAction,
   getMoviesByGenreAction,

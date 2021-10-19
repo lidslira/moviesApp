@@ -5,7 +5,7 @@ import {
   moviesByGenre,
   searchMovies,
   showMoviesList,
-} from '~/shared/services/movies';
+} from '~/modules/Movies/services/movies';
 import {
   getMovieCreditsErrorAction,
   getMovieCreditsSuccessAction,

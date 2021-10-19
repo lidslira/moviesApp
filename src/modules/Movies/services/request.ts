@@ -1,4 +1,4 @@
-import api from '~/shared/services/api';
+import api from '~/modules/Movies/services/api';
 
 interface ParamsProps {
   text: string;

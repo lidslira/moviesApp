@@ -1,6 +1,6 @@
 import React from 'react';
 import {MoviesProps} from '~/dtos';
-import {IMG_PATH} from '~/shared/constants/api';
+import {IMG_PATH} from '~/modules/Movies/constants/api';
 
 import * as S from './styles';
 
