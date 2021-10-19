@@ -1,4 +1,4 @@
-import {all, takeLatest, call, put} from 'redux-saga/effects';
+import {all, takeLatest, call, put, select} from 'redux-saga/effects';
 import {
   movieCreditsDetails,
   movieDetails,
@@ -6,6 +6,7 @@ import {
   searchMovies,
   showMoviesList,
 } from '~/modules/Movies/services/movies';
+import {ApplicationState} from '~/shared/store';
 import {
   getMovieCreditsErrorAction,
   getMovieCreditsSuccessAction,
@@ -25,6 +26,7 @@ import {
   GetMoviesByGenreProps,
   MoviesTypes,
   SearchMoviesProps,
+  SetMoviesProps,
 } from './types';
 
 export interface ResponseGenerator {
@@ -36,12 +38,26 @@ export interface ResponseGenerator {
   statusText?: string;
 }
 
-function* setMoviesSagas() {
+function* setMoviesSagas(action: SetMoviesProps) {
   try {
-    const response: ResponseGenerator = yield call(showMoviesList);
+    const response: ResponseGenerator = yield call(
+      showMoviesList,
+      action.payload.page,
+    );
 
     if (response.status >= 200 && response.status < 300) {
-      yield put(setMoviesSuccessAction(response.data.results));
+      const {moviesList} = yield select(
+        (state: ApplicationState) => state.movies,
+      );
+
+      let moreMovies = [];
+
+      if (action.payload.page === 1) {
+        moreMovies = response.data.results;
+      } else {
+        moreMovies = [...moviesList, ...response.data.results];
+      }
+      yield put(setMoviesSuccessAction(moreMovies));
     } else {
       yield put(setMoviesErrorAction());
     }

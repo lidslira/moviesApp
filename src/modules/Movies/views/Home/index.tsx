@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import {ApplicationState} from '~/shared/store';
@@ -15,13 +15,23 @@ import {Header} from '~/shared/components/Header';
 import {MOVIE_DETAILS} from '~/shared/constants/routes';
 
 export const Home: React.FC = () => {
-  const {moviesList} = useSelector((state: ApplicationState) => state.movies);
+  const [page, setPage] = useState(1);
+
+  const {moviesList, loading} = useSelector(
+    (state: ApplicationState) => state.movies,
+  );
+
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setMoviesAction());
-  }, [dispatch]);
+    dispatch(setMoviesAction(page));
+  }, [dispatch, page]);
+
+  const setPopularMovies = () => {
+    dispatch(setMoviesAction(page));
+    setPage(page + 1);
+  };
 
   const goToMovieDetails = (movie: MoviesProps) => {
     dispatch(getMovieAction(movie.id));
@@ -44,6 +54,10 @@ export const Home: React.FC = () => {
         keyExtractor={(item: any) => item.id.toString()}
         showsVerticalScrollIndicator={false}
         ListFooterComponent={<S.Footer />}
+        refreshing={loading}
+        onRefresh={() => setPopularMovies()}
+        onEndReached={() => setPopularMovies()}
+        onEndReachedThreshold={0.1}
       />
     </S.Container>
   );

@@ -8,9 +8,9 @@ import {
 } from '../constants/api';
 import request from './request';
 
-export const showMoviesList = async () => {
+export const showMoviesList = async (page: number) => {
   try {
-    const response = await request.get(MOVIES_PATH);
+    const response = await request.get(MOVIES_PATH, '', `&page=${page}`);
     return response;
   } catch {
     return null;

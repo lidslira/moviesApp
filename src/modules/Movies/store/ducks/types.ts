@@ -36,6 +36,7 @@ export interface MoviesState {
 
 export interface SetMoviesProps extends Action {
   type: MoviesTypes.SET_MOVIES;
+  payload: {page: number};
 }
 
 export interface SetMoviesSuccessProps extends Action {

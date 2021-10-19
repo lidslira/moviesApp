@@ -20,8 +20,8 @@ import {
   GetMovieCreditsSuccessProps,
 } from './types';
 
-export const setMoviesAction = (): SetMoviesProps =>
-  action(MoviesTypes.SET_MOVIES);
+export const setMoviesAction = (page: number): SetMoviesProps =>
+  action(MoviesTypes.SET_MOVIES, {page});
 
 export const setMoviesSuccessAction = (
   moviesList: MoviesProps,

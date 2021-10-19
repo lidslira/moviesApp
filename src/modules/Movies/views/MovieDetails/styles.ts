@@ -27,13 +27,13 @@ export const DetailsTitleText = styled(Text).attrs({
 })`
   font-family: 'OpenSans-SemiBold';
   color: ${({theme}) => theme.Colors.TEXT_COLOR};
-  margin-bottom: 5px;
+  margin-bottom: 13px;
 `;
 
 export const DetailsText = styled(Text).attrs({
   fontSize: 16.9,
 })`
-  margin-top: 5px;
+  margin-top: 10px;
   font-family: 'OpenSans-Regular';
   color: ${({theme}) => theme.Colors.TEXT_COLOR};
   text-align: center;
@@ -42,7 +42,7 @@ export const DetailsText = styled(Text).attrs({
 export const CreditsText = styled(Text).attrs({
   fontSize: 16.9,
 })`
-  margin: 15px 5px 5px 5px;
+  margin: 10px 5px 5px 5px;
   padding: 10px;
   font-family: 'OpenSans-Regular';
   color: ${({theme}) => theme.Colors.TEXT_COLOR};
@@ -52,7 +52,7 @@ export const CreditsText = styled(Text).attrs({
 export const DetailsGenreText = styled(Text).attrs({
   fontSize: 16.6,
 })`
-  margin: 15px 5px 5px 5px;
+  margin: 15px 5px 0px 5px;
   font-family: 'OpenSans-Regular';
   color: ${({theme}) => theme.Colors.TEXT_COLOR};
   text-align: center;
@@ -72,8 +72,8 @@ export const MovieTitle = styled(Text).attrs({
   fontSize: 22,
 })`
   font-family: 'OpenSans-Bold';
+  padding: 0px 10px 0px 10px;
   text-align: center;
-  font-weight: 600;
   color: ${({theme}) => theme.Colors.TEXT_COLOR};
 `;
 
