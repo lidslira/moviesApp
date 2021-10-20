@@ -42,7 +42,7 @@ export const DetailsText = styled(Text).attrs({
 export const CreditsText = styled(Text).attrs({
   fontSize: 16.9,
 })`
-  margin: 10px 5px 5px 5px;
+  margin: 10px 8px 5px 8px;
   padding: 10px;
   font-family: 'OpenSans-Regular';
   color: ${({theme}) => theme.Colors.TEXT_COLOR};

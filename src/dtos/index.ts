@@ -13,6 +13,7 @@ export interface MoviesProps {
   poster_path: string;
   original_title: string;
   original_language: string;
+  runtime: number;
   homepage: string;
   id: string;
   overview: string;

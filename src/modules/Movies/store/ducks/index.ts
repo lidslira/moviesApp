@@ -29,6 +29,7 @@ const INITIAL_STATE: MoviesState = {
     ],
     id: '',
     release_date: '',
+    runtime: 0,
     status: '',
     tagline: '',
     title: '',

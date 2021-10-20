@@ -40,3 +40,10 @@ export const CreditsDetails = (credits: any[]) => {
   uniqueArr = [...new Set(newArray)];
   return uniqueArr.join(', ').replace(/, ([^,]*)$/, ' and $1');
 };
+
+export const MovieRuntime = (duration: number) => {
+  if (duration !== 0) {
+    return `${duration} min. | `;
+  }
+  return null;
+};

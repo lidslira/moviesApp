@@ -10,7 +10,12 @@ import {Header} from '~/shared/components/Header';
 import * as S from './styles';
 import {ApplicationState} from '~/shared/store';
 import {IMG_PATH} from '~/modules/Movies/constants/api';
-import {CreditsDetails, DateFormat, MovieGenres} from '../../utils';
+import {
+  CreditsDetails,
+  DateFormat,
+  MovieGenres,
+  MovieRuntime,
+} from '../../utils';
 
 const MovieDetails: React.FC = () => {
   const {Colors} = useContext(ThemeContext);
@@ -27,6 +32,7 @@ const MovieDetails: React.FC = () => {
   const newDate = DateFormat(movie.release_date);
   const genres = MovieGenres(movie.genres);
   const credits = CreditsDetails(creditsDetails.crew);
+  const movieDuration = MovieRuntime(movie.runtime);
 
   return (
     <S.Container>
@@ -51,7 +57,8 @@ const MovieDetails: React.FC = () => {
         </S.ContainerName>
         <S.ContainerTitleDetails>
           <S.DetailsText>
-            IMDB: {movie.vote_average} | {newDate}
+            IMDB: {movie.vote_average} | {movieDuration}
+            {newDate}
           </S.DetailsText>
           <S.DetailsGenreText>{genres}</S.DetailsGenreText>
           <S.CreditsText>Direction: {credits} </S.CreditsText>
