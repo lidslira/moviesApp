@@ -43,10 +43,10 @@ This project is a task of the Lead Dell mentoring program. It was assigned in or
   <li>Shows trending movies in the homepage</li>
   <li>Searchs and lists found movies showing title and IMDB vote average</li>
   <li>Shows movies genres which, when selected, lists the movies that are popular in that selected category</li>
-  <li>Shows more informations about the wanted movie </li>
+  <li>Shows more informations about the wanted movie, such as movie duration, release date, overview details and directors. </li>
   <li>Accessibility options: </li>
-    <ul>• High contrast</ul>
-    <ul>• Increase, decrease and restore font to its original size</ul>
+   <ul>• High contrast</ul>
+   <ul>• Increase, decrease and restore font to its original size</ul>
 </ul>
 
 ## 💻 Login information
