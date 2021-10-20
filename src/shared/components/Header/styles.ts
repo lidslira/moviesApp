@@ -41,5 +41,5 @@ export const IconNav = styled(Icon).attrs<IconNavProps>(({name, iconType}) => ({
   size: 26,
   type: iconType,
 }))<IconNavProps>`
-  color: white;
+  color: ${({theme}) => theme.Colors.ACCESSIBILITY};
 `;

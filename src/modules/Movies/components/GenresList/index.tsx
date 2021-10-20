@@ -30,8 +30,8 @@ const GenreList: React.FC = () => {
         extraData={Genres}
         renderItem={renderGenreList}
         horizontal
+        showsHorizontalScrollIndicator={false}
         keyExtractor={(item: any) => item.id.toString()}
-        showsVerticalScrollIndicator={false}
       />
     </S.Container>
   );
