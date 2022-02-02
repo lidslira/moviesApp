@@ -5,7 +5,7 @@ import sagaPlugin from 'reactotron-redux-saga';
 
 let reactotron;
 
-const host = '192.168.0.119';
+const host = '192.168.0.000';
 
 if (__DEV__) {
   reactotron = Reactotron.configure({host})
